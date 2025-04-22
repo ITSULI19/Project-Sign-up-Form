@@ -1,156 +1,256 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* style.css */
+
+/* 1) Importar fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap');
+
+/* 2) Reset y box‑sizing */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/*variables*/
-:root{
-    --fondo-izquierdo: #1f2833;
-    --fondo-derecho: #66fcf1;
-    --texto-principal: #ffffff;
-    --texto-secundario: #c4c4c4;
-    --boton-accion-fondo: #0b0c10;
-    --boton-accion-texto: #ffffff;
-    --campos-formulario: #f0f0f0;
-    --borde-inputs: #1f2833;
-    --fondo-general: #5c6d7c;
-    --fuente-principal: 'Poppins', sans-serif;
-    --fuente-secundaria: 'Roboto','Open Sans', sans-serif;
-}
-/*body*/
-body{
-    background-color: var(--fondo-general);
-    width: 100vw;
-    height: 100vh;
-    
-}
-/*main*/
-#container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: row wrap;
-    width: 90vw;
-    height: 90vh;
-    margin: calc(100vh - 90% / 2) auto;
+/* 3) Variables de color, tipografía y espaciados */
+:root {
+  /* Colores originales */
+  --fondo-izquierdo: #1f2833;
+  --fondo-derecho: #66fcf1;
+  --texto-principal: #ffffff;
+  --texto-secundario: #c4c4c4;
+  --boton-accion-fondo: #0b0c10;
+  --boton-accion-texto: #ffffff;
+  --campos-formulario: #f0f0f0;
+  --borde-inputs: #1f2833;
+  --fondo-general: #5c6d7c;
+
+  /* Tipografías */
+  --fuente-principal: 'Poppins', sans-serif;
+  --fuente-secundaria: 'Roboto', 'Open Sans', sans-serif;
+
+  /* Espaciados y tamaños */
+  --line-height: 1.4;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1.25rem;
+  --transition-fast: 0.2s ease-in-out;
 }
 
-/*columna izquierda*/
-#izquierda{
-    background-color: var(--fondo-izquierdo);
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    border: none;
-    border-bottom-left-radius: 20px;
-    border-top-left-radius: 20px;
+/* 4) Base del documento */
+html {
+  font-size: 100%;                /* 16px base */
+  scroll-behavior: smooth;        /* UX y SEO para anclas */
 }
-/*contenido de la columna izquierda*/
-#logo{
-    width: 25%;
-    height: 25%;
-    border-top-left-radius: 20px;
+body {
+  font-family: var(--fuente-secundaria);
+  line-height: var(--line-height);
+  background-color: var(--fondo-general);
+  color: var(--texto-principal);
+  min-height: 100vh;
 }
-.title{
-    color: var(--texto-principal);
-    font-family: var(--fuente-principal);
-    font-size: 2rem;
-    text-align: center;
-    margin: 10px auto;
-    font-weight: bold;
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
-#sub-title{
-    color: var(--texto-principal);
-    font-family: var(--fuente-principal);
-    font-size: 1.5rem;
-    text-align: center;
-    margin-top: 10%;
-    font-weight: bold;
+button,
+input,
+textarea {
+  font-family: inherit;
+  line-height: inherit;
+  transition: background-color var(--transition-fast),
+              color var(--transition-fast),
+              border-color var(--transition-fast);
 }
-.description{
-    color: var(--texto-secundario);
-    font-family: var(--fuente-secundaria);
-    font-size: 1rem;
-    text-align: center;
-    margin-top: 3%;
-}   
-#button-left, #submit{
-    background-color: var(--boton-accion-fondo);
-    color: var(--boton-accion-texto);
-    font-family: var(--fuente-principal);
-    font-size: 1.5rem;
-    width: 50%;
-    height: 10%;
-    border-radius: 5px;
-    border: none;
-    margin: 5% auto;
-    cursor: pointer;
-    text-align: center;
-    font-weight: bold;
-}
-#button-left:hover{
-    background-color: var(--boton-accion-texto);
-    color: var(--boton-accion-fondo);
-    transition: 0.3s;
+:focus-visible {
+  outline: 3px solid var(--boton-accion-texto);
+  outline-offset: 2px;
 }
 
-/*columna derecha*/
-#derecha{
-    background-color: var(--fondo-derecho);
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    border: none;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+/* 5) Contenedor principal: dos paneles */
+#container {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 100vh;
 }
 
-/*contenido de la columna derecha*/
-.description-dos{
-    color: var(--fondo-izquierdo);
-    font-family: var(--fuente-secundaria);
-    font-size: 1rem;
-    margin-top: 10px;
-    margin: 2% auto;
+/* 6) Panel IZQUIERDO */
+#izquierda {
+  flex: 1;
+  background-color: var(--fondo-izquierdo);
+  /* Ajusta la ruta a tu imagen de la mano */
+  background-image: url('../assets/images/hand.png');
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: auto 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-lg);
 }
-/*formulario*/
-form{
-    display: flex;
+
+#izquierda #logo {
+  width: 80px;
+  margin-bottom: var(--spacing-md);
+}
+
+.title {
+  font-family: var(--fuente-principal);
+  font-size: 2.5rem;
+  line-height: 1.2;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: var(--spacing-sm);
+  color: var(--texto-principal);
+}
+
+#sub-title {
+  font-family: var(--fuente-principal);
+  font-size: 1.75rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  color: var(--texto-principal);
+}
+
+.description {
+  font-family: var(--fuente-secundaria);
+  font-size: 1.125rem;
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  color: var(--texto-secundario);
+}
+
+#button-left {
+  background-color: var(--boton-accion-fondo);
+  color: var(--boton-accion-texto);
+  font-family: var(--fuente-principal);
+  font-size: 1rem;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+#button-left:hover,
+#button-left:focus {
+  background-color: var(--boton-accion-texto);
+  color: var(--boton-accion-fondo);
+}
+
+/* 7) Panel DERECHO */
+#derecha {
+  flex: 1;
+  background-color: var(--fondo-derecho);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--spacing-lg);
+}
+
+#derecha .title {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--fondo-izquierdo);
+}
+
+.description-dos {
+  font-family: var(--fuente-secundaria);
+  font-size: 1.125rem;
+  margin-bottom: var(--spacing-lg);
+  color: var(--fondo-izquierdo);
+  text-transform: capitalize;
+}
+
+/* 8) Formulario en grid de dos columnas */
+form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md) var(--spacing-lg);
+}
+
+/* Etiqueta del bloque */
+.contact {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-family: var(--fuente-principal);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--fondo-izquierdo);
+  margin-bottom: var(--spacing-md);
+}
+
+/* Cada campo de formulario */
+.dato-formulario {
+  display: flex;
+  flex-direction: column;
+}
+.dato-formulario label {
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--fondo-izquierdo);
+}
+.input,
+textarea {
+  background-color: var(--campos-formulario);
+  border: 1px solid var(--borde-inputs);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-sm);
+  font-size: 1rem;
+  width: 100%;
+}
+textarea {
+  resize: vertical;
+  min-height: 6rem;
+}
+
+/* Asignación de grid para campos */
+.dato-formulario:nth-of-type(1) { grid-column: 1; }
+.dato-formulario:nth-of-type(2) { grid-column: 2; }
+.dato-formulario:nth-of-type(3) { grid-column: 1; }
+.dato-formulario:nth-of-type(4) { grid-column: 2; }
+/* Mensaje ocupa todo el ancho */
+.dato-formulario:nth-of-type(5) { grid-column: 1 / -1; }
+
+/* Botón de envío */
+#submit {
+  grid-column: 1 / -1;
+  justify-self: end;
+  background-color: var(--boton-accion-fondo);
+  color: var(--boton-accion-texto);
+  font-family: var(--fuente-principal);
+  font-size: 1rem;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+#submit:hover,
+#submit:focus {
+  background-color: var(--boton-accion-texto);
+  color: var(--boton-accion-fondo);
+  border: 1px solid var(--fondo-izquierdo);
+}
+
+/* 9) Responsive: apilar en móvil */
+@media (max-width: 768px) {
+  #container {
     flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    width: 100%;
-    height: 80%;
-}
-.contact{
-    color: var(--fondo-izquierdo);
-    font-family: var(--fuente-principal);
-    font-size: 1.5rem;
-    text-align: center;
-    font-weight: bold;
-}
-.dato-formulario{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    color: var(--fondo-izquierdo);
-    font-size: 1.2rem;
-}
-.input{
-    border-color: var(--borde-inputs);
-    border-width: 1px;
-    border-style: solid;
-    background-color: var(--campos-formulario);
-    padding: 2px;
-    width: 100%;
-}  
-#submit:hover{
-    background-color: var(--boton-accion-texto);
-    color: var(--boton-accion-fondo);
-    transition: 0.3s;
-    border: 1px solid var(--fondo-izquierdo);
+  }
+  form {
+    grid-template-columns: 1fr;
+  }
+  #izquierda {
+    background-size: cover;
+    background-position: center;
+  }
 }
