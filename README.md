@@ -35,7 +35,7 @@ Project-Sign-up-Form/
 
 1.  Clona el repositorio en tu máquina local.
     ```bash
-    git clone <https://github.com/ITSULI19/Project-Sign-up-Form#> 
+    git clone https://github.com/ITSULI19/Project-Sign-up-Form#
     ```
 2.  Navega a la carpeta del proyecto.
 3.  Asegúrate de que la estructura de archivos sea correcta, incluyendo las imágenes en `assets/images/` (especialmente `hand.png` si quieres el fondo del panel izquierdo).
